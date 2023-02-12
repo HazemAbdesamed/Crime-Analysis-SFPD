@@ -1,0 +1,5 @@
+LOAD DATA INFILE '/csv_files_mysql/crimesStaging.csv' 
+INTO TABLE crimes 
+FIELDS TERMINATED BY ',' 
+LINES TERMINATED BY '\n'
+IGNORE 1 ROWS;
