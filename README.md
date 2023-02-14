@@ -48,7 +48,7 @@ In the example above, 1242744 is repeated three times for the categories *Assaul
 ## Designing the Datamart model
 ![alt text](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/blob/main/incidents_dimensional_modeling.png "Datamart model")
 
-The model contains 4 dimensions and one fact table. Besides, a table *incident_category_ is used to normalize *incident* and *category*. However, it is also possible to add the category in the fact table in a denormalized manner so that the *incident_id* is repeated in the table, this solution can be used when we want to avoid an additional join operation; in contrast, the table will be harder to maintain in comparison to the previous approach.
+The model contains 4 dimensions and one fact table. Besides, a table *incident_category* is used to normalize *incident* and *category*. However, it is also possible to add the category in the fact table in a denormalized manner so that the *incident_id* is repeated in the table, this solution can be used when we want to avoid an additional join operation; in contrast, the table will be harder to maintain in comparison to the previous approach.
 
 The time dimension is a role playing dimension which will serve in keeping track of incidents and reports dates. 
 
