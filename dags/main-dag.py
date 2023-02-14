@@ -14,7 +14,8 @@ from functions.load_fact import load_fact
 from functions.load_inc_cat import load_inc_cat
 
 myconnection = connection() 
-
+def close_connection():
+    myconnection.close()
 default_args = {
     'owner' : 'Hazem',
     'start_date': datetime(2023, 1, 30),
@@ -32,8 +33,9 @@ with DAG('crime-analysis', default_args = default_args, schedule_interval='@dail
     t_load_report_dim = PythonOperator(task_id="load_report_dim", python_callable=load_report, op_kwargs={'connection':myconnection})
     t_load_loc_dim = PythonOperator(task_id="load_loc_dim", python_callable=load_location, op_kwargs={'connection':myconnection})
     t_load_cat_dim = PythonOperator(task_id="load_cat_dim", python_callable=load_category, op_kwargs={'connection':myconnection})
-    t_dummy = DummyOperator(task_id="dummy")
+    t_dummy1 = DummyOperator(task_id="dummy")
     t_load_fact = PythonOperator(task_id="load_fact", python_callable=load_fact, op_kwargs={'connection':myconnection})
     t_load_inc_cat_dim = PythonOperator(task_id="load_inc_cat", python_callable=load_inc_cat, op_kwargs={'connection':myconnection})
-    
-    t_fetch_data  >> [t_load_time_dim, t_load_report_dim, t_load_loc_dim, t_load_cat_dim] >> t_dummy >> [t_load_fact, t_load_inc_cat_dim]
+    t_dummy2 = DummyOperator(task_id="dummy2")
+    t_close_connection = PythonOperator(task_id="close_connection", python_callable=close_connection)
+    t_fetch_data  >> [t_load_time_dim, t_load_report_dim, t_load_loc_dim, t_load_cat_dim] >> t_dummy1 >> [t_load_fact, t_load_inc_cat_dim] >> t_dummy2 >> t_close_connection
