@@ -52,7 +52,7 @@ The model contains 4 dimensions and one fact table. Besides, a table *incident_c
 
 The time dimension is a role playing dimension which will serve in keeping track of incidents and reports dates. 
 
-The grain would be the incident that took place in a location at a time and reported at a time belonging to a category filed by a police district with a resolution status.
+The grain would be that each row int the fact table gives inforamtion about the incident that took place in a location at a time and reported at a time belonging to a category filed by a police district with a resolution status.
 
 
 ## Explaining the DAG
