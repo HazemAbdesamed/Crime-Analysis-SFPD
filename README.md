@@ -60,13 +60,13 @@ The grain would be that each row int the fact table gives inforamtion about the 
 
 The **Directed Acyclic Graph** in **Apache Airflow** represents a series of tasks.
 
-First, the data is retrieved from the API and is stored in a staging table. Then, the dimension tables are loaded after opening a conenction to the database. After that, the fact table and the *incident_cateogory* table are loaded. Finally, the connection to the database is closed.
+First, the data is retrieved from the API and is stored in a staging table. Then, the dimension tables are loaded after opening a connection to the database. After that, the fact table and the *incident_cateogory* tables are loaded. Finally, the connection to the database is closed.
 
 ## Fetching the relevant data
 
-In this step, the data is fetched from the API provided by the SFPD that contains information about the incidents from 2018 to present that is updated every day.
+In this step, the data is fetched from the API provided by the SFPD that contains information about the incidents from 2018 to present, the dataset is updated every day.
 
-The goal is to retrieve only yesterday's data, However if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. We then insert this data to a staging table *crimes*.
+The goal is to retrieve only yesterday's data; However, if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. We then insert this data to a staging table *crimes*.
 
 The task code can be found in [get data from api file](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/blob/main/dags/functions/get_data_from_api.py).
 
@@ -78,7 +78,7 @@ The script for the creation of the staging, dimension and fact tables can be fou
 
 The dimension tables loading step is where the dimension tables are loaded from the data that is present in the staging table in a correct manner.
 
-Only yesterday's date are loaded into the time dimension table
+Only yesterday's date is loaded into the time dimension table.
 
 The logic followed for the other dimensions : 
 <pre><code>
@@ -87,7 +87,7 @@ The logic followed for the other dimensions :
 - Retrieve only the values that are in the <b>df1</b> and not in <b>df2</b> and put them in <b>df3</b>.
 - App <b>df3</b> to the dimension table.
 </pre></code>
-The tasks codes are present in the [functions folder](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/tree/main/dags/functions)
+The tasks codes are present in the [functions folder](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/tree/main/dags/functions).
 
 ## Loading the fact table and the incident_category table
 After loading the dimension tables of the datamart, the fact table is loaded by applying joins between the dimension tables and the staging table.
@@ -96,10 +96,10 @@ The logic followed is :
 <pre><code>
 - Extract data from the staging table <b>ST</b> and performing some transformations.
 - Extract the dimension tables <b>DTs</b> and performing some transformations.
-- Perform joins between <b>ST</b> and <b>DTs</b>
-- Append new data to the fact table
+- Perform joins between <b>ST</b> and <b>DTs</b>.
+- Append new data to the fact table.
 </pre></code>
-This task code can be found in the [load fact file](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/tree/main/dags/functions/load_fact.py)
+This task code can be found in the [load fact file](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/tree/main/dags/functions/load_fact.py).
 
 The logic followed for loading *incident_category* table is :
 <pre><code>
