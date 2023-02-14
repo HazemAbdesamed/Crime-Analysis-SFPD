@@ -36,7 +36,7 @@ The [dataset](https://data.sfgov.org/Public-Safety/Police-Department-Incident-Re
 
 
 <picture>
-<img alt="incident_id repetition" src="https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/blob/main/incident_id%20repetition.png">
+<img alt="incident_id repetition" src="https://user-images.githubusercontent.com/48518599/218886739-8c63bdf9-4314-4eba-884b-2a2bec3b8bde.png">
 </picture>
 
 
