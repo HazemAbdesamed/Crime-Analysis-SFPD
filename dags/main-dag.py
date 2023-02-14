@@ -30,7 +30,7 @@ default_args = {
 
 with DAG('crime-analysis', default_args = default_args, schedule_interval='@daily', template_searchpath=['/usr/local/airflow/db_data_airflow/'], catchup=False) as dag:
 
-    # t_create_table = MySqlOperator(task_id="create-table-if-not-exists", mysql_conn_id="mysql_conn", sql="createTable.sql")
+    # t_create_table = MySqlOperator(task_id="create-table-if-not-exists", mysql_conn_id="mysql_conn", sql="createStagingTable.sql")
     t_fetch_data = PythonOperator(task_id="fetch-data", python_callable=getData, op_kwargs={'connection':myconnection})
     # t_create_connection = PythonOperator(task_id="create_conenction", python_callable=connection)
     # t_load_data = MySqlOperator(task_id="load-data", mysql_conn_id="mysql_conn", sql="loadData.sql")

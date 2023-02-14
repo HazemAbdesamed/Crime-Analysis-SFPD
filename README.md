@@ -121,7 +121,7 @@ One thing that i wanted to improve, is the resolution status of the incident. Af
 
 Besides, the approach followed when normalizing *incidents* and *category* data helps in updating only one row for each incidents in the fact table. In addition, adding the information of the date and time of the resolution to the dataset would be a good plus. This way, we can apply SCD concept in the fact table and we can get the time taken to resolve each incident.
 
-**Any advice, remark, criticism is welcomed**.
+**Any advice, remark or criticism is welcomed**.
 
 
 
