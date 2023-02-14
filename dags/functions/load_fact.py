@@ -9,7 +9,7 @@ def load_fact(**kwargs):
     import pandas as pd
     from datetime import datetime as dt, date    
 
-    # initialising the connection to the database
+    # getting the connection to the database
     connection = kwargs['connection']
 
     # get the data from the source
@@ -59,17 +59,5 @@ def load_fact(**kwargs):
     # append to the fact table the new data
     fact = joined[['incident_id', 'report_id', 'incident_time_id', 'report_time_id', 'incident_location_id', 'police_district', 'incident_description', 'resolution']].reset_index()
     
-    # fact['fact_indicator'] = fact['incident_id'].astype(str) + "$" + fact['report_id'].astype(str) + "$" + fact['incident_time_id'].astype(str) + "$" + fact['report_time_id'].astype(str) + "$" + fact['incident_location_id'].astype(str) 
-
-    # existing_fact['fact_indicator'] = existing_fact['incident_id'].astype(str) + "$" + existing_fact['report_id'].astype(str) + "$" + existing_fact['incident_time_id'].astype(str) + "$" + existing_fact['report_time_id'].astype(str) + "$" + existing_fact['incident_location_id'].astype(str)
-
-    # to_update = fact[~fact['incident_id'].isin(existing_fact['incident_id'])]
-    # to_update = fact[['incident_id', 'report_id', 'incident_time_id', 'report_time_id', 'incident_location_id', 'police_district', 'incident_description', 'resolution']]
-    # new_data = fact[~fact['incident_id'].isin(existing_fact['incident_id'])]
-    # new_data = fact[['incident_id', 'report_id', 'incident_time_id', 'report_time_id', 'incident_location_id', 'police_district', 'incident_description', 'resolution']]
-
-    # fact = fact.drop_duplicates(subset=['incident_id', 'report_id', 'incident_time_id', 'report_time_id', 'incident_location_id', 'resolution'], keep='last')
-
-    # to_update.to_sql('incident_fact', connection, if_exists='replace', method='update', index=False)
-    # new_data.to_sql('incident_fact', connection, if_exists='append', index = False)
+    # execute the query
     connection.execute("INSERT INTO incident_fact (incident_id, report_id, incident_time_id, report_time_id, incident_location_id, police_district, incident_description, resolution) VALUES (%(incident_id)s, %(report_id)s, %(incident_time_id)s, %(report_time_id)s, %(incident_location_id)s, %(police_district)s, %(incident_description)s, %(resolution)s) ON DUPLICATE KEY UPDATE resolution = VALUES(resolution)", fact.to_dict('records'))

@@ -3,7 +3,7 @@ def load_category(**kwargs):
     import pandas as pd
     # from functions.db_connection import connection
 
-    # initialising the connection to the database
+    # getting the connection to the database
     connection = kwargs['connection']
 
 

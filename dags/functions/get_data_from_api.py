@@ -4,7 +4,7 @@ def getData(**kwargs):
    from datetime import timedelta
 
 
-   # initialising the connection to the database
+   # getting the connection to the database
    connection = kwargs['connection']
 
    yesterday = pd.Timestamp(date.today() - timedelta(days = 1))

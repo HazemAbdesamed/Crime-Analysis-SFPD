@@ -6,7 +6,7 @@ def load_time(**kwargs):
     # get yesterday date in the format yyyy-mm-dd
     yesterday = date.today() - timedelta(days = 1)
 
-    # initialising the connection to the database
+    # getting the connection to the database
     connection = kwargs['connection']
 
     # getting existing dates

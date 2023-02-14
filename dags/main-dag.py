@@ -13,9 +13,14 @@ from functions.load_cat_dim import load_category
 from functions.load_fact import load_fact
 from functions.load_inc_cat import load_inc_cat
 
+# initialising the connection to the database
 myconnection = connection() 
+
+# function used to close the connection to the database
 def close_connection():
     myconnection.close()
+
+
 default_args = {
     'owner' : 'Hazem',
     'start_date': datetime(2023, 1, 30),

@@ -2,7 +2,7 @@ def load_inc_cat(**kwargs):
     # import libraries
     import pandas as pd
 
-    # initialising the connection to the database
+    # getting the connection to the database
     connection = kwargs['connection']
 
     # get the existing data in the dimension table
