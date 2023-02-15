@@ -82,8 +82,8 @@ Only yesterday's date is loaded into the time dimension table.
 
 The logic followed for the other dimensions : 
 <pre><code>
-- Distinct values related to the dimension are extracted from the staging table and are loaded in a python dataframe <b>df1</b> and perform some transformations.
-- Extract data that is present in the dimension table and put it in <b>df2</b> and perform some transformations.
+- Distinct values related to the dimension are extracted from the staging table and are loaded in a python dataframe <b>df1</b> and apply some transformations.
+- Extract data that is present in the dimension table and put it in <b>df2</b> and apply some transformations.
 - Retrieve only the values that are in the <b>df1</b> and not in <b>df2</b> and put them in <b>df3</b>.
 - App <b>df3</b> to the dimension table.
 </pre></code>
@@ -94,8 +94,8 @@ After loading the dimension tables of the datamart, the fact table is loaded by 
 
 The logic followed is :
 <pre><code>
-- Extract data from the staging table <b>ST</b> and performing some transformations.
-- Extract the dimension tables <b>DTs</b> and performing some transformations.
+- Extract data from the staging table <b>ST</b> and apply some transformations.
+- Extract the dimension tables <b>DTs</b> and apply some transformations.
 - Perform joins between <b>ST</b> and <b>DTs</b>.
 - Append new data to the fact table.
 </pre></code>
