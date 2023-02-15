@@ -115,13 +115,13 @@ The logic followed for loading *incident_category* table is :
 The dashboard contains information about the number of incidents by date and time, it is possible to navigate through the hierarchy and to filter by any year, month date or day of week. It also contains information about the number of incidents rate grouped by category and subcategory, the number of incidents by the resolution status in a pie chart and in the map.
 
 ## Final thoughts
-One thing that i wanted to improve, is the resolution status of the incident. After reading the API docs, I'm still not sure exactly of what happens to the dataset when an incident gets resolved. After loading all the dataset and querying it to find if any incident has changed is resoltion, the result was an empty set.
+One thing that i wanted to improve, is the resolution status of the incident. After reading the API docs, I'm still not sure exactly of what happens to the dataset when an incident gets resolved. After loading all the dataset and querying it to find any incident that has changed its resolution, the result was an empty set.
 
 ![alt text](https://user-images.githubusercontent.com/48518599/218883787-631531e7-3db9-4b14-b6dc-32005c3af849.png "no incident has changed its resolution in the dataset")
 
 Besides, the approach followed when normalizing *incidents* and *category* data helps in updating only one row for each incidents in the fact table. In addition, adding the information of the date and time of the resolution to the dataset would be a good plus. This way, we can apply SCD concept in the fact table and we can get the time taken to resolve each incident.
 
-**Any advice, remark or criticism is welcomed**.
+**Any advice, remark or criticism is welcome**.
 
 
 
