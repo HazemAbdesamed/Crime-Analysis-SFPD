@@ -62,6 +62,8 @@ The **Directed Acyclic Graph** in **Apache Airflow** represents a series of task
 
 First, the data is retrieved from the API and is stored in a staging table. Then, the dimension tables are loaded after opening a connection to the database. After that, the fact table and the *incident_cateogory* tables are loaded. Finally, the connection to the database is closed.
 
+This DAG is scheduled using Airflow to run on a daily basis.
+
 ## Fetching the relevant data
 
 In this step, the data is fetched from the API provided by the SFPD that contains information about the incidents from 2018 to present, the dataset is updated every day.
