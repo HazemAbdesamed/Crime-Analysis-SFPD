@@ -66,7 +66,7 @@ First, the data is retrieved from the API and is stored in a staging table. Then
 
 In this step, the data is fetched from the API provided by the SFPD that contains information about the incidents from 2018 to present, the dataset is updated every day.
 
-The goal is to retrieve only yesterday's data; However, if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. We then insert this data to a staging table *crimes*.
+The goal is to retrieve only yesterday's data; However, if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. Then, data is inserted to a staging table *crimes*.
 
 The task code can be found in [get data from api file](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/blob/main/dags/functions/get_data_from_api.py).
 
