@@ -2,14 +2,14 @@
 Getting Data from the SFPD dataset, integrating this data into a Datamart, and then proceed with the analysis through a dashboard.
 
 ## Objective
-The objective is to perform analysis on incidents happening in San Francicso via indicators in a dashboard while going through the integration phase after performing some transformations. This project is done in order to practice and be familiar with some data engineering and data analysis tools : **Apache Airflow**, **Docker**, **Python** and **Power BI**.
+The objective is to perform analysis on incidents happening in San Francisco via indicators in a dashboard while going through the integration phase after applying some transformations. This project is done in order to practice and be familiar with some data engineering and data analysis tools : **Apache Airflow**, **Docker**, **Python** and **Power BI**.
 
 ## Steps
 * Some explanations and remarks about the dataset. 
 * Designing the Datamart model. 
 * Explaining the DAG.
 * Fetching the relevant data i.e the incidents that have been reported the day before.
-* Create the tables if they have not been yet created.
+* Creating the tables if they have not been created yet.
 * Loading the dimension tables with the appropriate data.
 * Loading the fact table and the *incident_category* table.
 * Creating the dashboard after connecting Power BI to the Datamart.
@@ -52,7 +52,7 @@ The model contains 4 dimensions and one fact table. Besides, a table *incident_c
 
 The time dimension is a role playing dimension which will serve in keeping track of incidents and reports dates. 
 
-The grain would be that each row int the fact table gives inforamtion about the incident that took place in a location at a time and reported at a time belonging to a category filed by a police district with a resolution status.
+The grain would be that each row in the fact table gives inforamtion about the incident that took place in a location at a time and reported at a time belonging to a category filed by a police district with a resolution status.
 
 
 ## Explaining the DAG
@@ -68,7 +68,7 @@ This DAG is scheduled using Airflow to run on a daily basis.
 
 In this step, the data is fetched from the API provided by the SFPD that contains information about the incidents from 2018 to present, the dataset is updated every day.
 
-The goal is to retrieve only yesterday's data; However, if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. Then, data is inserted to a staging table *crimes*.
+The goal is to retrieve only yesterday's data; however, if we used the API endpoint provided https://data.sfgov.org/resource/wg3w-h783.csv, it will load 5000 random rows from the dataset. Fortunately, the API provides different ways to query the dataset using filters and [SoQL Queries](https://dev.socrata.com/docs/queries/ "click for more details on it"). Therefore, it is possible to get only yesterday's data. Then, data is inserted into a staging table *crimes*.
 
 The task code can be found in [get data from api file](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/blob/main/dags/functions/get_data_from_api.py).
 
