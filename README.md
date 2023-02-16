@@ -1,5 +1,5 @@
 # Crime-Analysis-SFPD
-Getting Data from the SFDP dataset, integrating this data into a Datamart, and then proceed with the analysis through a dashboard.
+Getting Data from the SFPD dataset, integrating this data into a Datamart, and then proceed with the analysis through a dashboard.
 
 ## Objective
 The objective is to perform analysis on incidents happening in San Francicso via indicators in a dashboard while going through the integration phase after performing some transformations. This project is done in order to practice and be familiar with some data engineering and data analysis tools : **Apache Airflow**, **Docker**, **Python** and **Power BI**.
