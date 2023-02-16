@@ -87,7 +87,7 @@ The logic followed for the other dimensions :
 - Distinct values related to the dimension are extracted from the staging table and are loaded in a python dataframe <b>df1</b> and apply some transformations.
 - Extract data that is present in the dimension table and put it in <b>df2</b> and apply some transformations.
 - Retrieve only the values that are in the <b>df1</b> and not in <b>df2</b> and put them in <b>df3</b>.
-- App <b>df3</b> to the dimension table.
+- Append <b>df3</b> to the dimension table.
 </pre></code>
 The tasks codes are present in the [functions folder](https://github.com/HazemAbdesamed/Crime-Analysis-SFDP/tree/main/dags/functions).
 
